@@ -1,0 +1,29 @@
+How to use efs with ec2 instance
+
+Step 0 --> create efs and add secuity group without inboud rule( secuity group name -- efs-demo ) 
+
+step 1 -we launch two ec2 intance and and do ssh  on  both 
+   sg -ssh -on port 22 ( to et connect with our machine ) 
+  Note make a security group name  --> ec2-efs 
+
+ add NFS   ibound rule  from efs-demo secuity group ( fuse efs sg ) 
+
+ 
+step 2 -  we need to install amazon efs -utlis pacakge on both ec2 instacnes 
+
+sudo yum install -y amazon-efs-utils
+
+Step 3- > crreate efs directory on both ec2 machine
+
+ sudo mkdir efs
+
+step 4  -> Then  mount efs  on  in both  ec2 instance  
+
+sudo mount -t efs -o tls fs-b0294661:/ efs
+
+Step 5 : - then  go inside efs directoy  of both instacnes 
+
+Step 6 - create file in one istance
+create a file.txt  and text  on one ec2 instance  
+
+Step 7   --> check in other machien it will present 
